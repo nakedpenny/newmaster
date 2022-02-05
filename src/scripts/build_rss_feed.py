@@ -63,7 +63,7 @@ def add_item(xml_parent, comic_data, comic_url, comic_info):
             e = ElementTree.SubElement(item, "category")
             e.attrib["type"] = "tag"
             e.text = tag
-    comic_image_url = urljoin(comic_url, "your_content/comics/{}/{}".format(post_id, comic_data["filename"]))
+    comic_image_url = urljoin(comic_url, comic_data["comic_paths"][0])
     html = build_rss_post(comic_image_url, comic_data.get("alt_text"), comic_data["post_html"])
     cdata_dict["post_id_" + post_id] = "<![CDATA[{}]]>".format(html)
     ElementTree.SubElement(item, "description").text = "{post_id_" + post_id + "}"
